@@ -20,10 +20,11 @@ async def tina(ctx):
     await ctx.send('jsem tina, je mi 17 a uz 4 roky piju kavu')       
 
 
+# List of heroes
 heroes = [                                                     
     "Abaddon",                                                     # strenght 
     "Alchemist",	
-    "Axe",	
+    "Axe",
     "Beastmaster",	
     "Brewmaster",
     "Bristleback",
@@ -139,22 +140,44 @@ heroes = [
 ]  
 
 
+
 picked = [
 
 
 ]
 
+
 def selectHero():
     return random.choice(heroes)
 
-
+# ! pick command
 @bot.command(name='pick')                                             
 async def pick(ctx):
     selected = selectHero()    
     await ctx.send(selected)
     picked.append(selected)
 
+# ! repick command
+@bot.command(name='repick')
+async def repick(ctx):
+    if (len(picked) >= len(heroes)):
+        await ctx.send("Všetci hrdinovia už boli picknutí")
+        return False
+
+    selected = selectHero()
+    if selected in picked:
+        await repick(ctx)
+        return False 
+
+    await ctx.send(selected)
+    picked.append(selected)
+
+
+
 
 if __name__ == "__main__":
     bot.run()
+
+
+
 
