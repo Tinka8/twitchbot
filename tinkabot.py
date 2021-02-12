@@ -11,10 +11,17 @@ bot = commands.Bot(
 )
 
 
+# replacing await and append 
+async def replaceSelected(ctx, selected):
+    await ctx.senc(selected)
+    picked.append(selected)
+
+# ! test command
 @bot.command(name='test')                                             
 async def test(ctx):
     await ctx.send('Funguje to')
 
+# ! tina command 
 @bot.command(name='tina')                                              
 async def tina(ctx):
     await ctx.send('jsem tina, je mi 17 a uz 4 roky piju kavu')       
@@ -143,7 +150,6 @@ heroes = [
 
 picked = [
 
-
 ]
 
 
@@ -154,8 +160,7 @@ def selectHero():
 @bot.command(name='pick')                                             
 async def pick(ctx):
     selected = selectHero()    
-    await ctx.send(selected)
-    picked.append(selected)
+    await replaceSelected(ctx, selected)
 
 # ! repick command
 @bot.command(name='repick')
@@ -169,8 +174,7 @@ async def repick(ctx):
         await repick(ctx)
         return False 
 
-    await ctx.send(selected)
-    picked.append(selected)
+    await replaceSelected(ctx, selected)
 
 
 
