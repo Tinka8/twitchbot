@@ -1,6 +1,6 @@
 ## twitchbot
 
-Genericky twitch bot, ktory odpoveda na prikazy v twitch chate.
+Generic twitch bot which responds to commands in twitch chat. 
 
 ### Installation
 
