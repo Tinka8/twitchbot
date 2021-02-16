@@ -13,8 +13,8 @@ bot = commands.Bot(
 
 # replacing await and append 
 async def replaceSelected(ctx, selected):
-    await ctx.senc(selected)
-    picked.append(selected)
+    await ctx.send(selected)
+    picked.append(selected)                                                        
 
 # ! test command
 @bot.command(name='test')                                             
@@ -25,6 +25,7 @@ async def test(ctx):
 @bot.command(name='tina')                                              
 async def tina(ctx):
     await ctx.send('jsem tina, je mi 17 a uz 4 roky piju kavu')       
+
 
 
 # List of heroes
@@ -147,19 +148,67 @@ heroes = [
 ]  
 
 
-
 picked = [
 
 ]
 
 
-def selectHero():
-    return random.choice(heroes)
+pos1 = [
+    "Slark",
+    "Spectre",
+    "Wraith King",
+]
+
+
+pos2 = [
+    "Storm Spirit",
+    "Lina",
+    "Puck",
+]
+
+
+pos3 = [
+    "Axe",
+    "Bristleback",
+    "Beastmaster",
+]
+
+
+pos4 = [
+    "Mirana",
+    "Jakiro",
+    "Dark Willow",
+]
+
+
+pos5 = [
+    "Oracle",
+    "Witch Doctor",
+    "Dazzle"
+]
+
+
+
+def selectHero(message = "!pick"):
+    if (message in ["!carry", "!pick 1"]):
+        return random.choice(pos1)
+    elif (message in ["!mid", "!pick 2"]):
+        return random.choice(pos2)
+    elif (message in ["!off", "!offlane", "!offke", "!pick 3"]):
+        return random.choice(pos3)
+    elif (message in ["!jungle", "!pick 4"]):
+        return random.choice(pos4)
+    elif (message == "!support"):
+        return random.choice(pos4 + pos5)
+    elif (message in ["!suck", "!pick 5"]):
+        return random.choice(pos5)
+    else:
+        return random.choice(heroes)
 
 # ! pick command
-@bot.command(name='pick')                                             
+@bot.command(name='pick', aliases = ["carry", "support", "jungle","off", "offlane","offka","mid","suck","jungle"])                                          
 async def pick(ctx):
-    selected = selectHero()    
+    selected = selectHero(ctx.content)    
     await replaceSelected(ctx, selected)
 
 # ! repick command
