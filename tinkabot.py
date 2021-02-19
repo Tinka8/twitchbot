@@ -2,11 +2,7 @@ import os
 import random
 from twitchio.ext import commands
 from resources.heroes import heroes
-from resources.heroes import pos1
-from resources.heroes import pos2
-from resources.heroes import pos3
-from resources.heroes import pos4
-from resources.heroes import pos5
+from resources.heroes import structuredHeroes
 
 bot = commands.Bot(
     irc_token=os.environ['TMI_TOKEN'],
@@ -15,6 +11,7 @@ bot = commands.Bot(
     prefix=os.environ['BOT_PREFIX'],
     initial_channels=[os.environ['CHANNEL']]
 )
+
 
 
 # replacing await and append 
@@ -33,26 +30,32 @@ async def tina(ctx):
     await ctx.send('jsem tina, je mi 17 a uz 4 roky piju kavu')       
 
 
+
+# list of already picked heroes
 picked = [
 
 ]
 
 
+
+# pick hero from arrays of heroes
 def selectHero(message = "!pick"):
-    if (message in ["!carry", "!pick 1"]):
-        return random.choice(pos1)
-    elif (message in ["!mid", "!pick 2"]):
-        return random.choice(pos2)
-    elif (message in ["!off", "!offlane", "!offke", "!pick 3"]):
-        return random.choice(pos3)
-    elif (message in ["!jungle", "!pick 4"]):
-        return random.choice(pos4)
-    elif (message == "!support"):
-        return random.choice(pos4 + pos5)
-    elif (message in ["!suck", "!pick 5"]):
-        return random.choice(pos5)
+    if message in ("!carry", "!pick 1"):
+        return random.choice(structuredHeroes["pos1"])
+    elif message in ("!mid", "!pick 2"):
+        return random.choice(structuredHeroes["pos2"])
+    elif message in ("!off", "!offlane", "!offke", "!pick 3"):
+        return random.choice(structuredHeroes["pos3"])
+    elif message in ("!jungle", "!pick 4"):
+        return random.choice(structuredHeroes["pos4"])
+    elif message == ("!support"):
+        return random.choice(structuredHeroes["pos4"] + structuredHeroes["pos5"])
+    elif message in ("!suck", "!pick 5"):
+        return random.choice(structuredHeroes["pos5"])
     else:
         return random.choice(heroes)
+
+
 
 # ! pick command
 @bot.command(name='pick', aliases = ["carry", "support", "jungle","off", "offlane","offka","mid","suck","jungle"])                                          
