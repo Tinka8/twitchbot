@@ -119,37 +119,52 @@ heroes = [
 ]  
 
 
-pos1 = [
-    "Slark",
-    "Spectre",
-    "Wraith King",
-]
+structuredHeroes = {
+    'pos1' : [
+        "Slark",
+        "Spectre",
+        "Wraith King",
+    ],
 
 
-pos2 = [
-    "Storm Spirit",
-    "Lina",
-    "Puck",
-]
+    'pos2' : [
+        "Storm Spirit",
+        "Lina",
+        "Puck",
+    ],
 
 
-pos3 = [
-    "Axe",
-    "Bristleback",
-    "Beastmaster",
-]
+    'pos3' : [
+        "Axe",
+        "Bristleback",
+        "Beastmaster",
+    ],
 
 
-pos4 = [
-    "Mirana",
-    "Jakiro",
-    "Dark Willow",
-]
+    'pos4' : [
+        "Mirana",
+        "Jakiro",
+        "Dark Willow",
+    ],
 
 
-pos5 = [
-    "Oracle",
-    "Witch Doctor",
-    "Dazzle"
-]
+    'pos5' : [
+        "Oracle",
+        "Witch Doctor",
+        "Dazzle"
+    ]
+}
 
+
+# flatten dictionary
+def flatten(structured):
+
+    flat = []
+
+    for key in structured.keys():
+        flat = flat + structured[key]
+    
+    return flat
+
+# flat list of all heroes
+heroes = flatten(structuredHeroes)
