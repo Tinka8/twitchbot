@@ -44,7 +44,7 @@ def selectHero(message = "!pick"):
         return random.choice(structuredHeroes["pos1"])
     elif message in ("!mid", "!pick 2"):
         return random.choice(structuredHeroes["pos2"])
-    elif message in ("!off", "!offlane", "!offke", "!pick 3"):
+    elif message in ("!off", "!offlane", "!offka", "!pick 3"):
         return random.choice(structuredHeroes["pos3"])
     elif message in ("!jungle", "!pick 4"):
         return random.choice(structuredHeroes["pos4"])
