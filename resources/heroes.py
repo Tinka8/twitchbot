@@ -1,6 +1,7 @@
 structuredHeroes = {
     'pos1' : [
         # Strength
+        "Alchemist",
         "Chaos Knight",
         "Dragon Knight",
         "Lifestealer",
@@ -9,12 +10,15 @@ structuredHeroes = {
 
         # Agility
         "Anti-Mage",
+        "Bloodseeker",
         "Drow Ranger",
         "Faceless Void",
         "Gyrocopter",
         "Juggernaut",
         "Lone Druid",
         "Luna",
+        "Medusa",
+        "Monkey King",
         "Morphling",
         "Naga Siren",
         "Phantom Assassin",
@@ -38,13 +42,10 @@ structuredHeroes = {
 
         # Agility
         "Arc Warden",
-        "Bloodseeker",
         "Broodmother",
         "Clinkz",
         "Ember Spirit",
-        "Medusa",
         "Meepo",
-        "Monkey King",
         "Razor",
         "Shadow Fiend",
         "Sniper",
@@ -65,6 +66,7 @@ structuredHeroes = {
         "Storm Spirit",
         "Tinker",
         "Visage",
+        "Void Spirit",
         "Zeus",
     ],
 
@@ -77,23 +79,24 @@ structuredHeroes = {
         "Bristleback",
         "Centaur Warrunner",
         "Doom",
-        "Elder Titan",
         "Legion Commander",
         "Magnus",
+        "Mars",
         "Night Stalker",
+        "Sand King",
         "Slardar",
+        "Snapfire",
         "Tidehunter",
         "Timbersaw",
         "Underlord",
 
         # Agility
-        "Nyx Assassin",
+        "Hoodwink",
         "Pangolier",
 
         # Intelligence
         "Dark Seer",
         "Nature’s Prophet",
-        "Windranger",
     ],
 
 
@@ -102,27 +105,31 @@ structuredHeroes = {
         "Clockwerk",
         "Earth Spirit",
         "Earthshaker",
+        "Elder Titan",
         "Phoenix",
         "Pudge",
-        "Sand King",
         "Spirit Breaker",
+        "Treant Protector",
         "Tusk",
-        "Undying",
 
         # Agility
         "Bounty Hunter",
         "Mirana",
+        "Nyx Assassin",
         "Venomancer",
 
         # Intelligence
         "Dark Willow",
-        "Dazzle",
         "Enigma",
+        "Grimstroke",
+        "Jakiro",
         "Rubick",
         "Shadow Demon",
         "Silencer",
         "Skywrath Mage",
         "Techies",
+        "Windranger",
+        "Winter Wyvern",
     ],
 
 
@@ -131,7 +138,7 @@ structuredHeroes = {
         "Abaddon",
         "Io",
         "Omniknight",
-        "Treant Protector",
+        "Undying",
 
         # Agility
         "Vengeful Spirit",
@@ -141,9 +148,9 @@ structuredHeroes = {
         "Bane",
         "Chen",
         "Crystal Maiden",
+        "Dazzle",
         "Disruptor",
         "Enchantress",
-        "Jakiro",
         "Keeper of the Light", 
         "Lich",
         "Lion",
@@ -151,7 +158,6 @@ structuredHeroes = {
         "Oracle",
         "Shadow Shaman",
         "Warlock",
-        "Winter Wyvern",
         "Witch Doctor",
     ]
 }
