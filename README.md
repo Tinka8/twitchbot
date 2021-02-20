@@ -12,3 +12,8 @@ pipenv install
 ```
 pipenv run python tinkabot.py
 ```
+### Tests
+
+```
+pipenv run python -m unittest discover -s tests
+```
