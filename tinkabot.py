@@ -1,8 +1,10 @@
 import os
 import random
+import time
 from twitchio.ext import commands
 from resources.heroes import heroes
 from resources.heroes import structuredHeroes
+from resources.winsloses import getWinsAndLoses
 
 bot = commands.Bot(
     irc_token=os.environ['TMI_TOKEN'],
@@ -88,6 +90,12 @@ async def chant(ctx):
     for j in reversed(range(0,6,+1)):
         await ctx.send((j-1)*"* ")
     
+# ! wl command
+@bot.command(name='wl')
+async def wl(ctx):
+    hours = time.time() - (5 * 3600)
+    results = getWinsAndLoses(os.environ['PLAYER_ID'], hours)
+    await ctx.send(str(results["wins"]) + "W - " + str(results["loses"]) + "L")
 
 
 
