@@ -97,6 +97,16 @@ async def wl(ctx):
     results = getWinsAndLoses(os.environ['PLAYER_ID'], hours)
     await ctx.send(str(results["wins"]) + "W - " + str(results["loses"]) + "L")
 
+# ! commands command
+@bot.command(name='commands')
+async def commands(ctx):
+    supported = ['!pick', '!repick', '!tina', '!test', '!wl', '!kda', '!chant']
+    line = ''
+    
+    for item in supported:
+        line = line + item + ', '
+    
+    await ctx.send('List of commands: ' + line.rstrip(', '))
 
 
 if __name__ == "__main__":
