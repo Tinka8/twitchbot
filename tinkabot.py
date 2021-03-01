@@ -5,6 +5,7 @@ from twitchio.ext import commands
 from resources.heroes import heroes
 from resources.heroes import structuredHeroes
 from resources.winsloses import getWinsAndLoses
+from resources.commands import fullList
 
 bot = commands.Bot(
     irc_token=os.environ['TMI_TOKEN'],
@@ -107,6 +108,17 @@ async def commands(ctx):
         line = line + item + ', '
     
     await ctx.send('List of commands: ' + line.rstrip(', '))
+
+# ! help command
+@bot.command(name='help')
+async def help(ctx):
+    message = ''
+    for command in fullList:
+        description = fullList[command]
+        message = message + command + ' - ' + description + ', '
+    
+    await ctx.send(message.rstrip(', '))
+
 
 
 if __name__ == "__main__":
