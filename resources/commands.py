@@ -7,3 +7,14 @@ fullList = {
   '!kda': 'KDA priemer od zaciatku streamu',
   '!chant': 'Random blbost do chatu'
 }
+
+supported = [
+  '!pick', 
+  '!repick', 
+  '!tina', 
+  '!test', 
+  '!wl', 
+  '!kda', 
+  '!chant'
+  ]
+  
