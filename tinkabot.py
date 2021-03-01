@@ -6,6 +6,7 @@ from resources.heroes import heroes
 from resources.heroes import structuredHeroes
 from resources.winsloses import getWinsAndLoses
 from resources.commands import fullList
+from resources.commands import supported
 
 bot = commands.Bot(
     irc_token=os.environ['TMI_TOKEN'],
@@ -35,9 +36,7 @@ async def tina(ctx):
 
 
 # list of already picked heroes
-picked = [
-
-]
+picked = []
 
 
 
@@ -72,11 +71,13 @@ async def pick(ctx):
 async def repick(ctx):
     if (len(picked) >= len(heroes)):
         await ctx.send("Všetci hrdinovia už boli picknutí")
+        
         return False
 
     selected = selectHero()
     if selected in picked:
         await repick(ctx)
+        
         return False 
 
     await replaceSelected(ctx, selected)
@@ -103,7 +104,6 @@ async def wl(ctx):
 # ! commands command
 @bot.command(name='commands')
 async def commands(ctx):
-    supported = ['!pick', '!repick', '!tina', '!test', '!wl', '!kda', '!chant']
     line = ''
     
     for item in supported:
