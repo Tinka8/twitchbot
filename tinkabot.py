@@ -64,6 +64,7 @@ def selectHero(message = "!pick"):
 @bot.command(name='pick', aliases = ["carry", "support", "jungle","off", "offlane","offka","mid","suck","jungle"])                                          
 async def pick(ctx):
     selected = selectHero(ctx.content)    
+    
     await replaceSelected(ctx, selected)
 
 # ! repick command
@@ -96,6 +97,7 @@ async def chant(ctx):
 async def wl(ctx):
     hours = time.time() - (5 * 3600)
     results = getWinsAndLoses(os.environ['PLAYER_ID'], hours)
+    
     await ctx.send(str(results["wins"]) + "W - " + str(results["loses"]) + "L")
 
 # ! commands command
@@ -113,6 +115,7 @@ async def commands(ctx):
 @bot.command(name='help')
 async def help(ctx):
     message = ''
+    
     for command in fullList:
         description = fullList[command]
         message = message + command + ' - ' + description + ', '
