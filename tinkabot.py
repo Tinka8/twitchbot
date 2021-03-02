@@ -130,7 +130,7 @@ async def kda(ctx):
     assists = 0
     deaths = 0
     result = 0
-    
+
     results = getRecentMatches(42943450)
     json = results.json()
     hours = time.time() - (5 * 3600)
@@ -149,6 +149,37 @@ async def kda(ctx):
         result = (kills + assists) / deaths 
 
     await ctx.send(round(result,2))
+
+# ! topkda commmand
+@bot.command(name='topkda')
+async def topkda(ctx):
+    kills = 0
+    assists = 0
+    deaths = 0
+    result = 0
+    top = 0
+
+    results = getRecentMatches(42943450)
+    json = results.json()
+    hours = time.time() - (5 * 3600)
+
+    for match in json:
+        
+        if (match["start_time"] > hours):
+
+            kills = kills + match['kills']
+            assists = assists + match['assists']
+            deaths = deaths + match['deaths']
+    
+    if deaths == 0:
+        result = (kills + assists)
+    else:
+        result = (kills + assists) / deaths
+    
+    if result > top:
+        top = result 
+
+    await ctx.send(str(match['kills']) + '/' + str(match['deaths']) + '/' + str(match['assists']) + ' - ' + str(round(top,2)))
 
 
 
