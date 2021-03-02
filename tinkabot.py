@@ -7,6 +7,7 @@ from resources.heroes import structuredHeroes
 from resources.winsloses import getWinsAndLoses
 from resources.commands import fullList
 from resources.commands import supported
+from resources.winsloses import getRecentMatches
 
 bot = commands.Bot(
     irc_token=os.environ['TMI_TOKEN'],
@@ -121,6 +122,33 @@ async def help(ctx):
         message = message + command + ' - ' + description + ', '
     
     await ctx.send(message.rstrip(', '))
+
+# ! kda command
+@bot.command(name='kda')
+async def kda(ctx):
+    kills = 0
+    assists = 0
+    deaths = 0
+    result = 0
+    
+    results = getRecentMatches(42943450)
+    json = results.json()
+    hours = time.time() - (5 * 3600)
+
+    for match in json:
+        
+        if (match["start_time"] > hours):
+
+            kills = kills + match['kills']
+            assists = assists + match['assists']
+            deaths = deaths + match['deaths']
+            
+    if deaths == 0:
+        result = (kills + assists)
+    else:
+        result = (kills + assists) / deaths 
+
+    await ctx.send(round(result,2))
 
 
 
