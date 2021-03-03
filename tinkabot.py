@@ -210,7 +210,7 @@ async def wr(ctx):
         elif match["radiant_win"] == False and match["player_slot"] <= 128:       
             output['loses'] += 1
 
-    winrate = ( (output['wins'] / 20) )* 100
+    winrate = (output['wins'] / len(json)) * 100
 
     await ctx.send(str(round(winrate,2)) + '% ' + '(za posledných 20 zápasov')
 
