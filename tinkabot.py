@@ -7,7 +7,7 @@ from resources.heroes import structuredHeroes
 from resources.winsloses import getWinsAndLoses
 from resources.commands import fullList
 from resources.commands import supported
-from resources.winsloses import getRecentMatches
+from resources.winsloses import getRecentMatches 
 
 bot = commands.Bot(
     irc_token=os.environ['TMI_TOKEN'],
@@ -180,6 +180,39 @@ async def topkda(ctx):
         top = result 
 
     await ctx.send(str(match['kills']) + '/' + str(match['deaths']) + '/' + str(match['assists']) + ' - ' + str(round(top,2)))
+
+# ! wr command
+@bot.command(name='wr')
+async def wr(ctx):
+    winrate = 0
+    output = {
+        'wins': 0,
+        'loses': 0
+    }
+    
+    results = getRecentMatches(42943450)
+    json = results.json()
+
+    for match in json:
+        # fatallik was radiant and won 
+        if match["radiant_win"] == True and match["player_slot"] <= 127:          
+            output['wins'] += 1
+
+         # fatallik was radiant and lost
+        elif match["radiant_win"] == True and match["player_slot"] >= 127:        
+            output['loses'] += 1
+
+        # fatallik was dire and won
+        elif match["radiant_win"] == False and match["player_slot"] >= 128:      
+            output['wins'] += 1
+
+        # fatallik was dire and lost
+        elif match["radiant_win"] == False and match["player_slot"] <= 128:       
+            output['loses'] += 1
+
+    winrate = ( (output['wins'] / 20) )* 100
+
+    await ctx.send(str(round(winrate,2)) + '% ' + '(za posledných 20 zápasov')
 
 
 
