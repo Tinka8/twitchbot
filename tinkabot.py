@@ -24,6 +24,12 @@ async def replaceSelected(ctx, selected):
     await ctx.send(selected)
     picked.append(selected)                                                        
 
+# replacing json 
+def getRecentMatchesJson(playerId): 
+    results = getRecentMatches(playerId)
+    return results.json()
+
+
 # ! test command
 @bot.command(name='test')                                             
 async def test(ctx):
@@ -38,7 +44,6 @@ async def tina(ctx):
 
 # list of already picked heroes
 picked = []
-
 
 
 # pick hero from arrays of heroes
@@ -131,8 +136,7 @@ async def kda(ctx):
     deaths = 0
     result = 0
 
-    results = getRecentMatches(42943450)
-    json = results.json()
+    json = getRecentMatchesJson(42943450)
     hours = time.time() - (5 * 3600)
 
     for match in json:
@@ -159,8 +163,7 @@ async def topkda(ctx):
     result = 0
     top = 0
 
-    results = getRecentMatches(42943450)
-    json = results.json()
+    json = getRecentMatchesJson(42943450)
     hours = time.time() - (5 * 3600)
 
     for match in json:
@@ -190,8 +193,7 @@ async def wr(ctx):
         'loses': 0
     }
     
-    results = getRecentMatches(42943450)
-    json = results.json()
+    json = getRecentMatchesJson(42943450)
 
     for match in json:
         # fatallik was radiant and won 
@@ -212,7 +214,22 @@ async def wr(ctx):
 
     winrate = (output['wins'] / len(json)) * 100
 
-    await ctx.send(str(round(winrate,2)) + '% ' + '(za posledných 20 zápasov')
+    await ctx.send(str(round(winrate,2)) + '% ' + '(za posledných 20 zápasov)')
+
+# ! versatility command
+@bot.command(name='versatility')
+async def versatility(ctx):
+    # list of heroes id played in last 20 matches
+    versatility = []
+
+    json = getRecentMatchesJson(42943450)
+
+    for match in json:
+        hero = versatility.append(match['hero_id'])
+
+    count = set(versatility)
+
+    await ctx.send(str(len(count)) + ' ' + '(za posledných 20 zápasov)')
 
 
 
