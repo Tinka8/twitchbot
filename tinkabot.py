@@ -19,15 +19,16 @@ bot = commands.Bot(
 
 
 
-# replacing await and append 
+# wrapper for await and append 
 async def replaceSelected(ctx, selected):
     await ctx.send(selected)
     picked.append(selected)                                                        
 
-# replacing json 
+# wrapper for getRecentMatches with cast to json 
 def getRecentMatchesJson(playerId): 
     results = getRecentMatches(playerId)
     return results.json()
+
 
 
 # ! test command
@@ -45,28 +46,27 @@ async def tina(ctx):
 # list of already picked heroes
 picked = []
 
-
 # pick hero from arrays of heroes
-def selectHero(message = "!pick"):
-    if message in ("!carry", "!pick 1"):
-        return random.choice(structuredHeroes["pos1"])
-    elif message in ("!mid", "!pick 2"):
-        return random.choice(structuredHeroes["pos2"])
-    elif message in ("!off", "!offlane", "!offka", "!pick 3"):
-        return random.choice(structuredHeroes["pos3"])
-    elif message in ("!jungle", "!pick 4"):
-        return random.choice(structuredHeroes["pos4"])
-    elif message == ("!support"):
-        return random.choice(structuredHeroes["pos4"] + structuredHeroes["pos5"])
-    elif message in ("!suck", "!pick 5"):
-        return random.choice(structuredHeroes["pos5"])
+def selectHero(message = '!pick'):
+    if message in ('!carry', '!pick 1'):
+        return random.choice(structuredHeroes['pos1'])
+    elif message in ('!mid', '!pick 2'):
+        return random.choice(structuredHeroes['pos2'])
+    elif message in ('!off', '!offlane', '!offka', '!pick 3'):
+        return random.choice(structuredHeroes['pos3'])
+    elif message in ('!jungle', '!pick 4'):
+        return random.choice(structuredHeroes['pos4'])
+    elif message == ('!support'):
+        return random.choice(structuredHeroes['pos4'] + structuredHeroes['pos5'])
+    elif message in ('!suck', '!pick 5'):
+        return random.choice(structuredHeroes['pos5'])
     else:
         return random.choice(heroes)
 
 
 
 # ! pick command
-@bot.command(name='pick', aliases = ["carry", "support", "jungle","off", "offlane","offka","mid","suck","jungle"])                                          
+@bot.command(name='pick', aliases = ['carry', 'support', 'jungle','off', 'offlane','offka','mid','suck','jungle'])                                          
 async def pick(ctx):
     selected = selectHero(ctx.content)    
     
@@ -76,7 +76,7 @@ async def pick(ctx):
 @bot.command(name='repick')
 async def repick(ctx):
     if (len(picked) >= len(heroes)):
-        await ctx.send("Všetci hrdinovia už boli picknutí")
+        await ctx.send('Všetci hrdinovia už boli picknutí')
         
         return False
 
@@ -92,12 +92,12 @@ async def repick(ctx):
 @bot.command(name='chant')
 async def chant(ctx):
     for i in range(0,6,+1):
-        await ctx.send((i-1)*"* ")
+        await ctx.send((i-1)*'* ')
 
-    await ctx.send("* * * * * fatal")
+    await ctx.send('* * * * * fatal')
 
     for j in reversed(range(0,6,+1)):
-        await ctx.send((j-1)*"* ")
+        await ctx.send((j-1)*'* ')
     
 # ! wl command
 @bot.command(name='wl')
@@ -105,7 +105,7 @@ async def wl(ctx):
     hours = time.time() - (5 * 3600)
     results = getWinsAndLoses(os.environ['PLAYER_ID'], hours)
     
-    await ctx.send(str(results["wins"]) + "W - " + str(results["loses"]) + "L")
+    await ctx.send(str(results['wins']) + 'W - ' + str(results['loses']) + 'L')
 
 # ! commands command
 @bot.command(name='commands')
@@ -141,7 +141,7 @@ async def kda(ctx):
 
     for match in json:
         
-        if (match["start_time"] > hours):
+        if (match['start_time'] > hours):
 
             kills = kills + match['kills']
             assists = assists + match['assists']
@@ -168,7 +168,7 @@ async def topkda(ctx):
 
     for match in json:
         
-        if (match["start_time"] > hours):
+        if (match['start_time'] > hours):
 
             kills = kills + match['kills']
             assists = assists + match['assists']
@@ -197,19 +197,19 @@ async def wr(ctx):
 
     for match in json:
         # fatallik was radiant and won 
-        if match["radiant_win"] == True and match["player_slot"] <= 127:          
+        if match['radiant_win'] == True and match['player_slot'] <= 127:          
             output['wins'] += 1
 
          # fatallik was radiant and lost
-        elif match["radiant_win"] == True and match["player_slot"] >= 127:        
+        elif match['radiant_win'] == True and match['player_slot'] >= 127:        
             output['loses'] += 1
 
         # fatallik was dire and won
-        elif match["radiant_win"] == False and match["player_slot"] >= 128:      
+        elif match['radiant_win'] == False and match['player_slot'] >= 128:      
             output['wins'] += 1
 
         # fatallik was dire and lost
-        elif match["radiant_win"] == False and match["player_slot"] <= 128:       
+        elif match['radiant_win'] == False and match['player_slot'] <= 128:       
             output['loses'] += 1
 
     winrate = (output['wins'] / len(json)) * 100
@@ -233,7 +233,7 @@ async def versatility(ctx):
 
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     bot.run()
 
 
