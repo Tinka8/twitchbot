@@ -1,4 +1,3 @@
-# tests/test_heroes.py
 import unittest
 
 from resources.heroes import flatten
@@ -20,3 +19,4 @@ class TestHeroes(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+    

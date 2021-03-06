@@ -27,19 +27,7 @@ async def replaceSelected(ctx, selected):
 # wrapper for getRecentMatches with cast to json 
 def getRecentMatchesJson(playerId): 
     results = getRecentMatches(playerId)
-    return results.json()
-
-
-
-# ! test command
-@bot.command(name='test')                                             
-async def test(ctx):
-    await ctx.send('Funguje to')
-
-# ! tina command 
-@bot.command(name='tina')                                              
-async def tina(ctx):
-    await ctx.send('jsem tina, je mi 17 a uz 4 roky piju kavu')       
+    return results.json()  
 
 
 

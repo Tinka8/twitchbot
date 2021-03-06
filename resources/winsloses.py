@@ -41,3 +41,4 @@ def getWinsAndLoses(playerId, since):
     print(output['loses'])
 
     return output
+    
