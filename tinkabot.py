@@ -75,17 +75,6 @@ async def repick(ctx):
         return False 
 
     await replaceSelected(ctx, selected)
-
-# ! chant command
-@bot.command(name='chant')
-async def chant(ctx):
-    for i in range(0,6,+1):
-        await ctx.send((i-1)*'* ')
-
-    await ctx.send('* * * * * fatal')
-
-    for j in reversed(range(0,6,+1)):
-        await ctx.send((j-1)*'* ')
     
 # ! wl command
 @bot.command(name='wl')
