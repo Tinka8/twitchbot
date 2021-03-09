@@ -1,6 +1,7 @@
 import os
 import random
 import time
+import requests
 from twitchio.ext import commands
 from resources.heroes import heroes
 from resources.heroes import structuredHeroes
