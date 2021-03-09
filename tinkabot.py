@@ -248,7 +248,7 @@ async def top10(ctx):
             'rate': rate
         })
 
-        message = ''
+    message = ''
         
     for item in human:
         message = message + ' ' + item['hero_name'] + ' - ' + str(item['rate']) + '% '
