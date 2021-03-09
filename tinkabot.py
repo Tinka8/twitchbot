@@ -250,8 +250,8 @@ async def top10(ctx):
 
         message = ''
         
-        for item in human:
-            message = message + ' ' + item['hero_name'] + ' - ' + str(item['rate']) + '% '
+    for item in human:
+        message = message + ' ' + item['hero_name'] + ' - ' + str(item['rate']) + '% '
     
     await ctx.send(message)
 
