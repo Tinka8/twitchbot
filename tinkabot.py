@@ -251,7 +251,6 @@ async def top10(ctx):
             unsorted[hero['hero_id']] = round((hero['win'] / hero['games']) * 100, 2)
     
     resorted = dict(sorted(unsorted.items(), key=lambda item: item[1], reverse=True))
-
     resorted = list(resorted.items())[:10]
 
     human = []
@@ -272,7 +271,7 @@ async def top10(ctx):
             'rate': rate
         })
 
-        message = ''
+    message = ''
         
     for item in human:
         message = message + ' ' + item['hero_name'] + ' - ' + str(item['rate']) + '% '
