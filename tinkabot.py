@@ -208,6 +208,53 @@ async def versatility(ctx):
 
     await ctx.send(str(len(count)) + ' ' + '(za posledných 20 zápasov)')
 
+# ! top10 command
+@bot.command(name='top10')
+async def top10(ctx):
+    
+    response = requests.get('https://api.opendota.com/api/players/' + str(os.environ['PLAYER_ID']) + '/heroes')
+    heroes = response.json()
+   
+    response = requests.get('https://api.opendota.com/api/heroes')
+    names = response.json()
+    
+    unsorted = {}
+
+    for hero in heroes:
+        
+        if hero['games'] > 5:
+            
+            unsorted[hero['hero_id']] = round((hero['win'] / hero['games']) * 100, 2)
+    
+    resorted = dict(sorted(unsorted.items(), key=lambda item: item[1], reverse=True))
+
+    resorted = list(resorted.items())[:10]
+
+    human = []
+
+    for hero in resorted:
+
+        rate = hero[1]
+
+        hero_name = ''
+
+        for name in names:
+            
+            if int(name['id']) == int(hero[0]):
+                hero_name = name['localized_name']
+
+        human.append({
+            'hero_name': hero_name,
+            'rate': rate
+        })
+
+        message = ''
+        
+        for item in human:
+            message = message + ' ' + item['hero_name'] + ' - ' + str(item['rate']) + '% '
+    
+    await ctx.send(message)
+
 
 
 if __name__ == '__main__':
