@@ -3,24 +3,22 @@ fullList = {
   '!repick': 'Vyberie nahodneho hrdinu zo zoznamu, ktory este nebol picknuty',
   '!wl': 'Pocet vyhier a prehier od zaciatku streamu',
   '!kda': 'KDA priemer od zaciatku streamu',
+  '!chant': 'Random blbost do chatu',
   '!topkda': 'Vyberie najlepsie dosiahnute KDA na streame',
   '!versatility': 'Pocet roznych hrdinov hranych za 20 zapasov',
   '!wr': 'Winrate v poslednych 20 zapasoch',
+  '!mmr': 'Fatallikovo mmr',
 }
 
 supported = [
   '!pick', 
-  '!repick',  
+  '!repick', 
   '!wl', 
   '!kda', 
+  '!chant',
   '!topkda',
   '!versatility',
   '!wr',
+  '!mmr',
   ]
-
-allHeroes = {
-
-
-  
-}
   
