@@ -9,7 +9,7 @@ fullList = {
   '!topkda': 'Vyberie najlepsie dosiahnute KDA na streame',
   '!versatility': 'Pocet roznych hrdinov hranych za 20 zapasov',
   '!wr': 'Winrate v poslednych 20 zapasoch',
-  '!mmr': 'Fatallikovo mmr'
+  '!mmr': 'Fatallikovo mmr',
 }
 
 supported = [
@@ -23,6 +23,6 @@ supported = [
   '!topkda',
   '!versatility',
   '!wr',
-  '!mmr'
+  '!mmr',
   ]
   
