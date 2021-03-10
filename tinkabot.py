@@ -9,6 +9,7 @@ from resources.winsloses import getWinsAndLoses
 from resources.commands import fullList
 from resources.commands import supported
 from resources.winsloses import getRecentMatches 
+from opendota.player import Player
 
 bot = commands.Bot(
     irc_token=os.environ['TMI_TOKEN'],
@@ -254,6 +255,14 @@ async def top10(ctx):
         message = message + ' ' + item['hero_name'] + ' - ' + str(item['rate']) + '% '
     
     await ctx.send(message)
+
+# ! mmr command
+@bot.command(name='mmr')
+async def mmr(ctx):
+    
+    fatallik = Player(42943450)
+
+    await ctx.send(fatallik.mmr())
 
 
 
