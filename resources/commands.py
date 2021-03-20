@@ -10,6 +10,7 @@ fullList = {
   '!versatility': 'Pocet roznych hrdinov hranych za 20 zapasov',
   '!wr': 'Winrate v poslednych 20 zapasoch',
   '!mmr': 'Fatallikovo mmr',
+  'guiltak': 'Guiltywolfovo estimated MMR z Opendota',
 }
 
 supported = [
@@ -24,5 +25,6 @@ supported = [
   '!versatility',
   '!wr',
   '!mmr',
+  'guiltak',
   ]
   
