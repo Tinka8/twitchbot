@@ -4,7 +4,7 @@ import os
 class Player:
     def __init__(self, player_id):
 
-        response = requests.get('https://api.opendota.com/api/players/' + str(os.environ['PLAYER_ID']))
+        response = requests.get('https://api.opendota.com/api/players/' + str(player_id))
         info = response.json()
 
         self.player_id = info
