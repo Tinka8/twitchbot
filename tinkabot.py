@@ -279,7 +279,7 @@ async def top10(ctx):
     
     await ctx.send(message)
 
-# ! mmr command
+# ! fatallik mmr command
 @bot.command(name='mmr')
 async def mmr(ctx):
     
@@ -287,7 +287,7 @@ async def mmr(ctx):
 
     await ctx.send(fatallik.mmr())
 
-# ! guiltak mmr
+# ! guiltak mmr command
 @bot.command(name='guiltak', aliases = ['guiltywolf'])
 async def guiltak(ctx):
 
