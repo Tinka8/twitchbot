@@ -287,6 +287,17 @@ async def mmr(ctx):
 
     await ctx.send(fatallik.mmr())
 
+# ! guiltak mmr
+@bot.command(name='guiltak', aliases = ['guiltywolf'])
+async def guiltak(ctx):
+
+    guiltak = Player(488124937)
+    time = int(10)
+    reason = str('nic.cz')
+    
+    await ctx.timeout(str('gu1ltywolf'), time, reason)
+    await ctx.send('Guiltywolfovo estimated MMR z Opendota je:' + ' ' + str(guiltak.mmr()))
+
 
 
 if __name__ == '__main__':
